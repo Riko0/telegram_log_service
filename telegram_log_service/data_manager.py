@@ -4,7 +4,7 @@ import logging
 
 import aiofiles
 
-from config import (
+from telegram_log_service.config import (
     WHITELIST_FILE, USER_INFO_FILE, ADMIN_TELEGRAM_NAME,
     SUBSCRIBERS_FILE, ALL_SUBSCRIBERS_FILE, TRAINING_DATA_FILE,
 )

@@ -1,6 +1,9 @@
-# Telegram Log Service
+# telegram-log-service
 
-A server that receives training logs via HTTP and sends real-time alerts through a Telegram bot. Designed to work with [messenger-logger-callback](https://github.com/Riko0/messenger_logger_callback).
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+**telegram-log-service** — a server that receives ML training logs via HTTP and sends real-time alerts through a Telegram bot. Designed to work with [messenger-logger-callback](https://github.com/Riko0/messenger_logger_callback).
 
 ## Architecture
 
@@ -27,18 +30,35 @@ Training Script                      Telegram Log Service                 Telegr
 - Python 3.8+
 - A Telegram bot token (create one via [@BotFather](https://t.me/BotFather))
 
-## Setup
+## Installation
+
+### From source (pip)
 
 ```bash
-# Install dependencies
-pip install -r deploy/requirements.txt
+git clone https://github.com/Riko0/telegram_log_service.git
+cd telegram_log_service
+pip install .
+```
 
-# Configure environment
+### Configure
+
+```bash
 cp .env.example .env
 # Edit .env and fill in your TELEGRAM_BOT_TOKEN and ADMIN_TELEGRAM_NAME
+```
 
-# Run the service
-python telegram_log_service/main.py
+### Run
+
+After installing, the `telegram-log-service` command is available system-wide:
+
+```bash
+telegram-log-service
+```
+
+Or using the Python module:
+
+```bash
+python -m telegram_log_service
 ```
 
 ## Docker
@@ -49,7 +69,7 @@ chmod +x deploy/docker/build_docker.sh deploy/scripts/startup.sh
 ./deploy/docker/build_docker.sh
 ```
 
-This builds and runs the container, mapping port 5000 and mounting the current directory for config files.
+The Docker image installs the package via `pip install .` and runs `telegram-log-service` as the entry point. Pass your `.env` file via `--env-file`.
 
 ## Configuration
 
@@ -152,6 +172,10 @@ When the client library sends heartbeat events (every ~60 seconds by default), t
 
 - **Whitelist, subscribers, user info** are saved to JSON files and survive restarts.
 - **Training run data** is saved to `training_data.json` on every meaningful event (not heartbeats) and restored on startup.
+
+## Related Projects
+
+- **[messenger-logger-callback](https://github.com/Riko0/messenger_logger_callback)** — the client library that sends training logs to this service. `pip install messenger-logger-callback`
 
 ## License
 

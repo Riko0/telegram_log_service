@@ -7,7 +7,7 @@ All functions return strings ready for bot.send_message(parse_mode=ParseMode.HTM
 import json
 from typing import Any, Dict, Optional
 
-from utils import escape_html
+from telegram_log_service.utils import escape_html
 
 
 # ---------------------------------------------------------------------------

@@ -5,16 +5,16 @@ import logging
 from logging.handlers import RotatingFileHandler
 from aiohttp import web
 
-from config import (
+from telegram_log_service.config import (
     WEB_SERVER_HOST, WEB_SERVER_PORT, STALL_ALERT_THRESHOLD_SECONDS,
     STALL_CHECK_INTERVAL_SECONDS, STALLED_RUN_AUTO_REMOVE_THRESHOLD_SECONDS,
     HEARTBEAT_STALL_THRESHOLD_SECONDS,
 )
-from data_manager import load_persistent_data, load_training_data_sync
-from global_state import training_data
-from web_handlers import receive_logs_handler
-from staleness_checker import check_for_stalled_runs
-from bot_handlers import dp, bot
+from telegram_log_service.data_manager import load_persistent_data, load_training_data_sync
+from telegram_log_service.global_state import training_data
+from telegram_log_service.web_handlers import receive_logs_handler
+from telegram_log_service.staleness_checker import check_for_stalled_runs
+from telegram_log_service.bot_handlers import dp, bot
 
 LOG_FILE = "bot_events.log"
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -103,13 +103,5 @@ async def main():
 
 
 if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        logger.info("KeyboardInterrupt. Shutting down.")
-        sys.stdout.flush()
-        sys.stderr.flush()
-    except Exception as e:
-        logger.error(f"Startup error: {e}", exc_info=True)
-        sys.stdout.flush()
-        sys.stderr.flush()
+    from telegram_log_service.__main__ import cli
+    cli()

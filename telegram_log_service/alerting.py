@@ -5,13 +5,13 @@ from typing import Optional
 from aiogram.enums import ParseMode
 from aiogram.exceptions import TelegramAPIError
 
-from bot_handlers import bot
-from global_state import training_data
-from data_manager import (
+from telegram_log_service.bot_handlers import bot
+from telegram_log_service.global_state import training_data
+from telegram_log_service.data_manager import (
     alert_subscribers, whitelisted_users, all_runs_subscribers, username_to_chat_id,
 )
-from config import STALL_ALERT_THRESHOLD_SECONDS, HEARTBEAT_STALL_THRESHOLD_SECONDS
-import message_builders as mb
+from telegram_log_service.config import STALL_ALERT_THRESHOLD_SECONDS, HEARTBEAT_STALL_THRESHOLD_SECONDS
+from telegram_log_service import message_builders as mb
 
 logger = logging.getLogger(__name__)
 

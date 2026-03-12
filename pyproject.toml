@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telegram-log-service"
+version = "0.1.0"
+authors = [
+  { name="Riko0", email="grigoriyalexeenko@gmail.com" },
+]
+description = "Telegram Log Service — receive ML training logs via HTTP and send real-time alerts through a Telegram bot."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+keywords = [
+    "telegram-log-service",
+    "telegram",
+    "training",
+    "logger",
+    "monitoring",
+    "machine learning",
+    "deep learning",
+    "telegram bot",
+    "training monitor",
+    "training alerts",
+    "huggingface",
+    "clearml",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: System :: Logging",
+    "Topic :: System :: Monitoring",
+]
+dependencies = [
+    "aiohttp",
+    "aiogram",
+    "python-dotenv",
+    "aiofiles",
+]
+
+[tool.setuptools.packages.find]
+include = ["telegram_log_service*"]
+
+[project.scripts]
+telegram-log-service = "telegram_log_service.__main__:cli"
+
+[project.urls]
+Homepage = "https://github.com/Riko0/telegram_log_service"
+Repository = "https://github.com/Riko0/telegram_log_service"
+"Bug Tracker" = "https://github.com/Riko0/telegram_log_service/issues"
+Documentation = "https://github.com/Riko0/telegram_log_service#readme"
+"Messenger Logger Callback" = "https://github.com/Riko0/messenger_logger_callback"

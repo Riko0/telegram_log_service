@@ -2,13 +2,13 @@ import logging
 import datetime
 from aiohttp import web
 
-from config import WEB_AUTH_TOKEN, BEST_METRIC_ALERT_COOLDOWN_SECONDS
-from global_state import training_data
-from data_manager import (
+from telegram_log_service.config import WEB_AUTH_TOKEN, BEST_METRIC_ALERT_COOLDOWN_SECONDS
+from telegram_log_service.global_state import training_data
+from telegram_log_service.data_manager import (
     save_training_data, cleanup_run_subscriptions, save_subscribers,
     alert_subscribers, all_runs_subscribers,
 )
-from alerting import (
+from telegram_log_service.alerting import (
     send_training_started_alert, send_training_finished_alert,
     send_training_resumed_alert, send_best_metric_changed_alert,
 )

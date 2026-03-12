@@ -2,10 +2,10 @@ import asyncio
 import datetime
 import logging
 
-from global_state import training_data
-from alerting import send_stalled_alert, send_stalled_run_removed_alert
-from data_manager import cleanup_run_subscriptions, save_training_data
-from config import (
+from telegram_log_service.global_state import training_data
+from telegram_log_service.alerting import send_stalled_alert, send_stalled_run_removed_alert
+from telegram_log_service.data_manager import cleanup_run_subscriptions, save_training_data
+from telegram_log_service.config import (
     STALL_ALERT_THRESHOLD_SECONDS,
     STALL_CHECK_INTERVAL_SECONDS,
     STALLED_RUN_AUTO_REMOVE_THRESHOLD_SECONDS,

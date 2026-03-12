@@ -4,16 +4,16 @@ from aiogram.enums import ParseMode
 from aiogram.exceptions import TelegramAPIError
 from aiogram.filters import CommandStart, Command
 
-from config import TELEGRAM_BOT_TOKEN, ADMIN_TELEGRAM_NAME
-from data_manager import (
+from telegram_log_service.config import TELEGRAM_BOT_TOKEN, ADMIN_TELEGRAM_NAME
+from telegram_log_service.data_manager import (
     whitelisted_users, user_id_to_info, save_whitelist_and_user_info,
     alert_subscribers, load_persistent_data, save_subscribers,
     all_runs_subscribers, register_user, rebuild_username_to_chat_id,
     cleanup_run_subscriptions, save_training_data,
 )
-from global_state import training_data
-from utils import escape_html
-import message_builders as mb
+from telegram_log_service.global_state import training_data
+from telegram_log_service.utils import escape_html
+from telegram_log_service import message_builders as mb
 
 logger = logging.getLogger(__name__)
 
