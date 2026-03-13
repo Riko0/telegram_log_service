@@ -3,7 +3,7 @@ import datetime
 import logging
 
 from telegram_log_service.global_state import training_data
-from telegram_log_service.alerting import send_stalled_alert, send_stalled_run_removed_alert
+from telegram_log_service.alerting import send_stalled_alert
 from telegram_log_service.data_manager import cleanup_run_subscriptions, save_training_data
 from telegram_log_service.config import (
     STALL_ALERT_THRESHOLD_SECONDS,
@@ -91,7 +91,6 @@ async def check_for_stalled_runs():
                                     f"{project_name}/{run_id} "
                                     f"(stalled for {time_stalled:.0f}s)."
                                 )
-                                await send_stalled_run_removed_alert(project_name, run_id)
                                 await cleanup_run_subscriptions(project_name, run_id)
 
                                 del training_data[project_name][run_id]

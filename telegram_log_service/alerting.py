@@ -108,7 +108,3 @@ async def send_best_metric_changed_alert(
     await _send_alert_to_subscribers(project_name, run_id, msg, "best_metric_changed")
 
 
-async def send_stalled_run_removed_alert(project_name: str, run_id: str):
-    run_info = training_data[project_name][run_id]
-    msg = mb.alert_stalled_run_removed(project_name, run_id, run_info)
-    await _send_alert_to_subscribers(project_name, run_id, msg, "stalled_removed")

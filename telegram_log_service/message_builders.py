@@ -289,16 +289,6 @@ def alert_best_metric_changed(
     return msg
 
 
-def alert_stalled_run_removed(project_name: str, run_id: str, run_info: dict) -> str:
-    msg = (
-        f"\U0001f5d1\ufe0f <b>Run Removed</b>\n\n"
-        f"The stalled run <code>{escape_html(project_name)}/{escape_html(run_id)}</code> "
-        f"has been automatically removed due to prolonged inactivity."
-        f"{_author_line(run_info)}"
-    )
-    return msg
-
-
 # ---------------------------------------------------------------------------
 # Paginated sending helper
 # ---------------------------------------------------------------------------
